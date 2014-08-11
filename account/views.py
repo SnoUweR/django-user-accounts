@@ -1,5 +1,4 @@
 from __future__ import unicode_literals
-
 from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.http import base36_to_int, int_to_base36
@@ -174,7 +173,11 @@ class SignupView(FormView):
             username = self.generate_username(form)
         user.username = username
         user.email = form.cleaned_data["email"].strip()
+        first_name = form.cleaned_data.get("first_name")
+        last_name = form.cleaned_data.get("last_name")
         password = form.cleaned_data.get("password")
+        user.first_name = first_name
+        user.last_name = last_name
         if password:
             user.set_password(password)
         else:

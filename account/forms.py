@@ -29,6 +29,16 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(),
         required=True
     )
+    first_name = forms.CharField(
+		label = _("FirstName"),
+		max_length = 30,
+        widget=forms.TextInput(),
+    )
+    last_name = forms.CharField(
+		label = _("Last Name"),
+		max_length = 30,
+        widget=forms.TextInput(),
+    )
     password = forms.CharField(
         label=_("Password"),
         widget=forms.PasswordInput(render_value=False)
